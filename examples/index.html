@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8"
+            content="width=device-width,
+            initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
+    <title>微信搞笑小程序</title>
+    <style>
+        #container{
+            text-align:center;
+        }
+        #num{
+            width:80%;
+            height: 50px;
+            font-size:30px;
+        }
+        #start{
+            width: 80%;
+            height: 40px;
+            line-height: 40px;
+            font-size:25px;
+            color: #a53415;
+            border:none;
+        }
+        #reload{
+            width: 40%;
+            height: 40px;
+            line-height: 40px;
+            font-size:25px;
+            color: #a57aa4;
+            border:none;
+        }
+        #output{
+            width: 40%;
+            height: 40px;
+            line-height: 40px;
+            font-size:25px;
+            color: #a57aa4;
+            border:none;
+        }
+        #first{
+            text-align: center;
+        }
+        #second{
+            text-align: center;
+            display:none;
+        }
+        #error{
+            color: red;
+        }
+        #erweima{
+            display: inline-block;
+        }
+    </style>
+    <script src="js/index.js"></script>
+</head>>
+<body>
+<div id="container">
+    <h1>把手机后四位连接成一句话，看谁的最搞笑！</h1>
+        <span id="date"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#">King-Kong</a>
+        <img src="images/message.gif"alt=""width="100%">
+        <img src="images/si.png"alt=""width="80%">
+    <div id="erweima"></div>
+</div>
+
+<div id="audio"></div>
+<div id="first">
+        <h2>请输入您手机号后四位</h2>
+        <input type="text" id="num" maxlength="4"/><br/><br/>
+        <button id="start" onclick="valid()">开始测试</button>
+    <h1 id="error"></h1>
+</div>
+<div id="second">
+      <h1 id="result"></h1>
+      <button id="reload" onclick="javascript:location.reload()">重新测试</button>
+      <button id="output" onclick="output()">分享出去</button>
+      <img src="images/study.png" alt="" width="100%"/>
+</div>
+
+
+
+<script>
+    //获取系统时间
+    var date=new Date();
+    //年
+    var year=date.getFullYear();
+    //月
+    var month=date.getMonth()+1;
+    //日
+    var day=date.getDay();
+    //计算结果
+    var result=year+"-"+month+"-"+date;
+    //动态显示系统时间
+    document.getElementById("date").innerHTML=result;
+
+    //第一个数字
+    var one=new Array();
+    one[0]="失眠的夜里";
+    one[1]="光棍节";
+    one[2]="恋爱了";
+    one[3]="无聊的周末";
+    one[4]="大病初愈";
+    one[5]="雷雨交加的夜晚";
+    one[6]="喝醉了酒";
+    one[7]="情人节晚上";
+    one[8]="等爱人出差了";
+    one[9]="吃饱以后";
+    //第二个数字
+    var two=new Array();
+    two[0]="在浴池";
+    two[1]="在水道里";
+    two[2]="在小溪边";
+    two[3]="在马背上";
+    two[4]="在地毯上";
+    two[5]="在酒吧";
+    two[6]="在高中教室";
+    two[7]="在电影院";
+    two[8]="在公交车上";
+    two[9]="在厕所";
+    //第三个数字
+    var three=new Array();
+    three[0]="跟数学老师";
+    three[1]="跟梦中情人";
+    three[2]="跟心里偶像";
+    three[3]="跟隔壁吴老二";
+    three[4]="跟猥琐怪叔叔";
+    three[5]="跟大胖子";
+    three[6]="跟保洁阿姨";
+    three[7]="跟老奶奶";
+    three[8]="跟数学老师";
+    three[9]="跟无家可归的小女孩";
+    //第四个数字
+    var four=new Array();
+    four[0]="唱《爱上一个不回家的人》";
+    four[1]="比赛吃蟑螂";
+    four[2]="紧紧的拥抱在一起";
+    four[3]="背靠背坐在一起";
+    four[4]="静静的看着彼此";
+    four[5]="接吻";
+    four[6]="憧憬美好未来";
+    four[7]="一起光着身子跑来跑去";
+    four[8]="玩真心话大冒险";
+    four[9]="拉粑粑";
+
+    function valid(){
+        //获取后四位手机号码
+        var num = document.getElementById("num").value;
+        //判断是否为空
+        if (num == "") {
+            document.getElementById("error").innerHTML = "手机号码不能为空";
+            return;
+        }
+        //判断是否为数字
+        if (isNaN(num) || num.length < 4) {
+            document.getElementById("error").innerHTML = "请输入四位整数";
+            return;
+        }
+        document.getElementById("error").innerHTML="";
+        //拆分字符串
+        var charArray = num.split("");
+        var first = charArray[0];
+        var second= charArray[1];
+        var third = charArray[2];
+        var forth = charArray[3];
+        //获取结果
+        var result = one[first] +","+two[second]+","+three[third]+","+four[forth]+".";
+        document.getElementById("result").innerHTML = result;
+        //显示第二部分
+        document.getElementById("second").style.display ="block";
+        document.getElementById("first").style.display ="none";
+        document.getElementById("audio").innerHTML=' <audio src="vi/audio.mp3"autoplay ></audio>';
+    }
+    //生成二维码
+    function output(){
+        //获取二维码放置的位置
+        var erweima=document.getElementById("erweima");
+        //创建二维码生成器，二维码放置的位置，2.二维码大小；
+        var qrcode=new QRCode(erweima,{
+            width:200,
+            height:200
+        })
+        //根据网址生成二维码
+        qrcode.makeCode("http://www.baidu.com");
+    }
+</script>
+</body>
+</html>
