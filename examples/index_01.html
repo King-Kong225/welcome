@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+          initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
+    <title>Tom猫</title>
+    <style>
+        * {
+            margin: 0 auto;
+        }
+
+        #container {
+            position: relative;
+        }
+
+        .btn {
+            position: absolute;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            width: 20%;
+            height: 7%;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        #cymbal {
+            left: 5%;
+            bottom: 40%;
+            background-image: url(tom/images/Button/cymbal.png);
+        }
+
+        #drink {
+            left: 5%;
+            bottom: 32%;
+            background-image: url(tom/images/Button/drink.png);
+        }
+
+        #eat {
+            left: 5%;
+            bottom: 24%;
+            background-image: url(tom/images/Button/eat.png);
+        }
+
+        #fart {
+            right: 5%;
+            bottom: 40%;
+            background-image: url(tom/images/Button/fart.png);
+        }
+
+        #pie {
+            right: 5%;
+            bottom: 32%;
+            background-image: url(tom/images/Button/pie.png);
+        }
+
+        #scratch {
+            right: 5%;
+            bottom: 24%;
+            background-image: url(tom/images/Button/scratch.png);
+        }
+
+        #knockout {
+            position: absolute;
+            width: 40%;
+            height: 28%;
+            background-color: rgba(157, 157, 250, 0.4);
+            left: 30%;
+            top: 20%;
+            border-radius: 40%;
+        }
+
+        #stomach {
+            position: absolute;
+            width: 35%;
+            height: 32%;
+            background-color: rgba(157, 157, 250, 0.4);
+            left: 32%;
+            top: 55%;
+            border-radius: 40%;
+        }
+
+        #footLeft {
+            position: absolute;
+            width: 5%;
+            height: 4%;
+            background-color: rgba(81, 227, 250, 0.4);
+            left: 38%;
+            bottom: 5%;
+            border-radius: 40%;
+        }
+
+        #footRight {
+            position: absolute;
+            width: 5%;
+            height: 4%;
+            background-color: rgba(81, 227, 250, 0.4);
+            right: 38%;
+            bottom: 5%;
+            border-radius: 40%;
+        }
+
+        #angry {
+            position: absolute;
+            width: 8%;
+            height: 6%;
+            background-color: rgba(250, 49, 229, 0.4);
+            right: 25%;
+            bottom: 10%;
+            border-radius: 40%;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <img src="tom/images/Angry/angry_0.jpg" width="100%" id="tom">
+
+    <button class="btn" id="cymbal" onclick="cymbal()"></button>
+    <button class="btn" id="drink" onclick="drink()"></button>
+    <button class="btn" id="eat" onclick="eat()"></button>
+    <button class="btn" id="fart" onclick="fart()"></button>
+    o
+    <button class="btn" id="pie" onclick="pie()"></button>
+    <button class="btn" id="scratch" onclick="scratch()"></button>
+    <button class="btn" id="knockout" onclick="knockout()"></button>
+    <button class="btn" id="footLeft" onclick="footLeft()"></button>
+    <button class="btn" id="footRight" onclick="footRight()"></button>
+    <button class="btn" id="stomach" onclick="stomach()"></button>
+    <button class="btn" id="angry" onclick="angry()"></button>
+</div>
+<div id="audio"></div>
+<script>
+
+    function isDisabled(){
+        var btns=document.getElementsByTagName("button");
+        for(var i=0;i<btns.length;i++){
+            btns[i].disabled=true;
+        }
+    }
+    function isNotDisabled(){
+        var btns=document.getElementsByTagName("button");
+        for(var i=0;i<btns.length;i++){
+            btns[i].disabled=false;
+        }
+    }
+
+    function cymbal() {
+        isDisabled();
+        setTimeout(function () {
+            document.getElementById("audio").innerHTML = '<audio src="tom/audio/cymbal.wav" autoplay></audio>';
+
+        }, 500);
+        var i = 0;
+        var timer = setInterval(function () {
+            document.getElementById("tom").src = "tom/images/Cymbal/cymbal_" + i + ".jpg";
+            i++;
+            if (i > 12) {
+                clearInterval(timer);
+                isNotDisabled();
+            }
+        }, 100);
+    }
+    function drink() {
+        isDisabled();
+        setTimeout(function () {
+            document.getElementById("audio").innerHTML = '<audio src="tom/audio/drink_1.wav"autoplay></audio>';
+        }, 1500);
+        setTimeout(function () {
+            document.getElementById("audio").innerHTML = '<audio src="tom/audio/drink_2.wav"autoplay></audio>';
+        }, 3800);
+        var i = 0;
+        var timer = setInterval(function () {
+            document.getElementById("tom").src = "tom/images/Drink/drink_" + i + ".jpg";
+            i++;
+            if (i > 80) {
+                clearInterval(timer);
+                isNotDisabled();
+            }
+        }, 100)
+    }
+    function eat() {
+        isDisabled();
+        setTimeout(function () {
+            document.getElementById("audio").innerHTML = '<audio src="tom/audio/eat.wav "autoplay></audio>';
+        }, 500);
+        var i = 0;
+        var timer = setInterval(function () {
+            document.getElementById("tom").src = "tom/images/Eat/eat_" + i + ".jpg";
+            i++;
+            if (i > 39) {
+                clearInterval(timer);
+                isNotDisabled();
+            }
+        }, 100);
+    }
+    function fart() {
+        isDisabled();
+        setTimeout(function () {
+            document.getElementById("audio").innerHTML = '<audio src="tom/audio/fart.wav"autoplay></audio>'
+        }, 1000);
+        var i = 0;
+        var timer = setInterval(function () {
+            document.getElementById("tom").src = "tom/images/Fart/fart_" + i + ".jpg";
+            i++;
+            if (i > 27) {
+                clearInterval(timer);
+                isNotDisabled();
+            }
+        }, 100)
+    }
+    function footLeft() {
+        isDisabled();
+        setTimeout(function () {
+            document.getElementById("audio").innerHTML = '<audio src="tom/audio/footLeft.wav"autoplay></audio>';
+        }, 1000);
+        var i = 0;
+        var timer = setInterval(function () {
+            document.getElementById("tom").src = "tom/images/FootLeft/footLeft_" + i + ".jpg";
+            i++;
+            if (i > 29) {
+                clearInterval(timer);
+                isNotDisabled();
+            }
+        }, 100)
+    }
+    function footRight() {
+        isDisabled();
+        setTimeout(function () {
+            document.getElementById("audio").innerHTML = '<audio src="tom/audio/footRight.wav"autoplay></audio>';
+        }, 500);
+        var i = 0;
+        var timer = setInterval(function () {
+            document.getElementById("tom").src = "tom/images/FootRight/footRight_" + i + ".jpg";
+            i++;
+            if (i > 29) {
+                clearInterval(timer);
+                isNotDisabled();
+            }
+        }, 100)
+    }
+    function knockout() {
+        isDisabled();
+        setTimeout(function () {
+            document.getElementById("audio").innerHTML = '<audio src="tom/audio/knockout_1.wav"autoplay></audio>';
+        }, 1500);
+        setTimeout(function () {
+            document.getElementById("audio").innerHTML = '<audio src="tom/audio/knockout_2.wav"autoplay></audio>';
+        }, 2000);
+        var i = 0;
+        var timer = setInterval(function () {
+            document.getElementById("tom").src = "tom/images/Knockout/knockout_" + i + ".jpg";
+            i++;
+            if (i > 80) {
+                clearInterval(timer);
+                isNotDisabled();
+            }
+        }, 100);
+    }
+    function pie() {
+        isDisabled();
+        setTimeout(function () {
+            document.getElementById("audio").innerHTML = '<audio src="tom/audio/pie.wav "autoplay></audio>';
+        }, 1000);
+        var i = 0;
+        var timer = setInterval(function () {
+            document.getElementById("tom").src = "tom/images/Pie/pie_" + i + ".jpg";
+            i++;
+            if (i > 23) {
+                clearInterval(timer);
+                isNotDisabled();
+            }
+        }, 100);
+    }
+    function scratch() {
+        isDisabled();
+        setTimeout(function () {
+            document.getElementById("audio").innerHTML = '<audio src="tom/audio/scratch.wav"autoplay></audio>';
+        }, 2000);
+        var i = 0;
+        var timer = setInterval(function () {
+            document.getElementById("tom").src = "tom/images/Scratch/scratch_" + i + ".jpg";
+            i++;
+            if (i > 55) {
+                clearInterval(timer);
+                isNotDisabled();
+            }
+        }, 100)
+    }
+    function stomach() {
+        isDisabled();
+        setTimeout(function () {
+            document.getElementById("audio").innerHTML = '<audio src="tom/audio/stomach.wav"autoplay></audio>';
+        }, 500);
+        var i = 0;
+        var timer = setInterval(function () {
+            document.getElementById("tom").src = "tom/images/Stomach/stomach_" + i + ".jpg";
+            i++;
+            if (i > 33) {
+                clearInterval(timer);
+                isNotDisabled();
+            }
+        }, 100);
+    }
+    function angry() {
+        isDisabled();
+        setTimeout(function () {
+            document.getElementById("audio").innerHTML = '<audio src="tom/audio/angry.wav"autoplay></audio>';
+        }, 500);
+        var i = 0;
+        var timer = setInterval(function () {
+            document.getElementById("tom").src = "tom/images/Angry/angry_" + i + ".jpg";
+            i++;
+            if (i > 25) {
+                clearInterval(timer);
+                isNotDisabled();
+            }
+        }, 100);
+    }
+</script>
+</body>
+</html>
